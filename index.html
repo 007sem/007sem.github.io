@@ -20,6 +20,7 @@
         color: #fff;
         background: #0a0a0a;
         opacity: 0.9;
+        position: relative;
       }
       h1 {
         font-size: 4.5em;
@@ -53,6 +54,30 @@
       a:hover:after {
         top: 0%;
       }
+      img{
+        width: 80vh;
+        max-width: 1800px;
+        height: auto;
+        position: fixed;
+        z-index: -1;
+        top: 10vh;
+        left: 40vw;
+        /* right: -20%; */
+        opacity: 0.2;
+        user-select: none;
+
+        animation: move 120s infinite;
+      }
+      @keyframes move {
+        0% {
+          /* 旋转 */
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+        
     </style>
   </head>
   <body>
@@ -68,6 +93,8 @@
     <p>
         In addition, I also like photography, skateboarding and missing my family and friends. But now I have heart disease. I don't think I can skate anymore.
     </p>
+      <img src="./img/start.png" alt="">
+   
   </body>
 </html>
 
