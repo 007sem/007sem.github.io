@@ -54,24 +54,30 @@
       a:hover:after {
         top: 0%;
       }
-      img{
+      .img{
         width: 80vh;
         max-width: 1800px;
-        height: auto;
+        height: 80vh;
+        max-height: 1800px;
         position: fixed;
-        z-index: -1;
-        top: 10vh;
+        z-index: 10;
+        top: 8vh;
         left: 40vw;
         /* right: -20%; */
-        opacity: 0.08;
-        user-select: none;
-
-        animation: move 120s infinite;
+        opacity: .1;
+        /* background: url(./img/start.webp) no-repeat center center; */
+        background-size: cover;
+        background-image: url(./img/start.webp);
+        /* background-color: #fff; */
+        animation: move 180s infinite linear;
       }
       @keyframes move {
         0% {
           /* 旋转 */
           transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(180deg);
         }
         100% {
           transform: rotate(360deg);
@@ -93,7 +99,7 @@
     <p>
         In addition, I also like photography, skateboarding and missing my family and friends. But now I have heart disease. I don't think I can skate anymore.
     </p>
-      <img src="./img/start.png" alt="">
+    <div class="img"> </div>
    
   </body>
 </html>
