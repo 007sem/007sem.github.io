@@ -1,22 +1,33 @@
 let icon = document.querySelector(".icon-suno") || document.querySelector(".icon-moono");
-let isLight = true;
+let isLight = !isNight();
+
+function isNight() {
+  let now = new Date();
+  let hour = now.getHours();
+  if (hour > 18 || hour < 6) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 // true = light, false = dark
 function changeStyle(isLight) {
-  let body = document.querySelector("body");
+  let html = document.querySelector("html");
   if (!isLight) {
     icon.classList.remove("icon-suno");
     icon.classList.add("icon-moono");
 
-    body.classList.remove("light");
-    body.classList.add("dark");
+    html.classList.remove("light");
+    html.classList.add("dark");
+
   } else {
     icon.classList.remove("icon-moono");
     icon.classList.add("icon-suno");
 
-    body.classList.remove("dark");
-    body.classList.add("light");
+    html.classList.remove("dark");
+    html.classList.add("light");
     
   }
 }
@@ -70,6 +81,7 @@ function init() {
   runderBlogList(blogData);
 
   changeStyle(isLight);
+
   document.querySelector(".home").addEventListener("click", () => {
     document.querySelector("#homepage").style.display = "block";
     document.querySelector("#blogpage").style.display = "none";
