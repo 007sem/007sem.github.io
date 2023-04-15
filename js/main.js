@@ -1,25 +1,29 @@
-let icon =
-  document.querySelector(".icon-suno") || document.querySelector(".icon-moono");
+let icon = document.querySelector(".icon-suno") || document.querySelector(".icon-moono");
+let isLight = true;
+
 
 // true = light, false = dark
 function changeStyle(isLight) {
+  let body = document.querySelector("body");
   if (!isLight) {
-    document.getElementById("style").href = "css/light.css";
     icon.classList.remove("icon-suno");
     icon.classList.add("icon-moono");
+
+    body.classList.remove("light");
+    body.classList.add("dark");
   } else {
-    document.getElementById("style").href = "css/dark.css";
     icon.classList.remove("icon-moono");
     icon.classList.add("icon-suno");
+
+    body.classList.remove("dark");
+    body.classList.add("light");
+    
   }
 }
 
 icon.addEventListener("click", () => {
-  if (icon.classList.contains("icon-suno")) {
-    changeStyle(false);
-  } else {
-    changeStyle(true);
-  }
+  isLight = !isLight;
+  changeStyle(isLight);
 });
 
 let blogData = [
@@ -64,6 +68,8 @@ function runderBlogDetail(data) {
 
 function init() {
   runderBlogList(blogData);
+
+  changeStyle(isLight);
   document.querySelector(".home").addEventListener("click", () => {
     document.querySelector("#homepage").style.display = "block";
     document.querySelector("#blogpage").style.display = "none";
@@ -75,6 +81,7 @@ function init() {
       runderBlogList(blogData);
     });
   });
+
 }
 
 init();
