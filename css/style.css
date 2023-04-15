@@ -78,11 +78,18 @@ a:hover:after {
   margin-right: 2em;
 }
 .footer .iconfont {
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin-right: 0.2em;
 }
 .blog-item {
   margin-top: 2rem;
   font-weight: 300;
   cursor: pointer;
+}
+#blogpage p {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.4em;
+  max-width: 32em;
+  margin-bottom: 1.4em;
 }

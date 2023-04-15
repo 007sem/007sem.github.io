@@ -22,65 +22,59 @@ icon.addEventListener("click", () => {
   }
 });
 
-
 let blogData = [
-    {
-        title: "Hello World！",
-        id: 'x001',
-        TimeRanges: "04/15/2023",
-        content:[
-            "终于有勇气提笔，主要原因也是个人情绪，想破头也想不出以何种方式缓解，只能写点什么，也许能让自己心情好一点吧。",
-            "很抱歉是以这样的方式开始写博客的，但好在有行动，起码结果是好的，有了一个真正属于我的地方，也能给世界留下些什么。",
-        ]
-    },
-].reverse()
+  {
+    title: "Hello World！",
+    id: "x001",
+    TimeRanges: "04/15/2023",
+    content: [
+      "这个世界似乎充满了虚伪和冷漠，人与人之间的关系变得越来越脆弱。我开始怀疑友谊的真实性，开始对人们的行为和动机产生怀疑。或许我只是一个无法入局的人。",
+      "尽管如此，我还是在试图寻找一丝希望和意义。我尽量让自己坚强，尽量去理解他人，尽量去寻找那些真诚的人和温暖的时刻。虽然我时常感到伤心和失望，但我不愿放弃对真理和人性的探求。",
+      "或许，我需要重新审视自己，重新认识自己的价值和存在。我应该变得独立和坚韧。我要自我肯定和自我关爱。",
+      "很抱歉我的第一篇博客或许有些沉重，但这是我内心真实的感受。我希望将这些情感记录下来，从中找到一些启示和答案。",
+    ],
+  },
+].reverse();
 
+function runderBlogList(data) {
+  let str = "";
+  data.forEach((item) => {
+    str += `<div class="blog-item" id="${item.id}">${item.TimeRanges} ${item.title}</div>`;
+  });
+  document.querySelector("#blogpage").innerHTML = str;
 
-function runderBlogList(data){
-    let str = ''
-    data.forEach((item) => {
-        str += `<div class="blog-item" id="${item.id}">${item.TimeRanges} ${item.title}</div>`
-    })
-    document.querySelector("#blogpage").innerHTML = str
-
-    document.querySelectorAll(".blog-item").forEach(item=>{
-        item.addEventListener("click", (e) => {
-            let id = e.target.id
-            let blogDetail = blogData.filter(item => item.id === id)
-            runderBlogDetail(blogDetail[0])
-        })
-    })
+  document.querySelectorAll(".blog-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let id = e.target.id;
+      let blogDetail = blogData.filter((item) => item.id === id);
+      runderBlogDetail(blogDetail[0]);
+    });
+  });
 }
 
-function runderBlogDetail(data){
-    let str = ''
-    str += `<h2>${data.title}</h2>`
-    str += `<span class='time'>${data.TimeRanges}</span>`
-    data.content.forEach((item) => {
-        str += `<p>${item}</p>`
-    })
-    document.querySelector("#blogpage").innerHTML = str
+function runderBlogDetail(data) {
+  let str = "";
+  str += `<h2>${data.title}</h2>`;
+  str += `<span class='time'>${data.TimeRanges}</span>`;
+  data.content.forEach((item) => {
+    str += `<p>${item}</p>`;
+  });
+  document.querySelector("#blogpage").innerHTML = str;
 }
 
-
-function init(){
-    runderBlogList(blogData)
-    document.querySelector(".home").addEventListener("click", () => {
-        document.querySelector("#homepage").style.display = "block";
-        document.querySelector("#blogpage").style.display = "none";
-    
-    })
-    document.querySelector(".blog").addEventListener("click", () => {
-        document.querySelector("#homepage").style.display = "none";
-        document.querySelector("#blogpage").style.display = "block";
-        runderBlogList(blogData)
-    })
+function init() {
+  runderBlogList(blogData);
+  document.querySelector(".home").addEventListener("click", () => {
+    document.querySelector("#homepage").style.display = "block";
+    document.querySelector("#blogpage").style.display = "none";
+  });
+  document.querySelectorAll(".blog").forEach((item) => {
+    item.addEventListener("click", () => {
+      document.querySelector("#homepage").style.display = "none";
+      document.querySelector("#blogpage").style.display = "block";
+      runderBlogList(blogData);
+    });
+  });
 }
 
-init()
-
-
-
-
-
-
+init();
